@@ -8,14 +8,14 @@ public enum CardValue {
     SEVEN,
     EIGHT,
     NINE,
-    TEN,
+    X,
     J,
     Q,
     K,
     A,
     TWO,
-    W,
     w,
+    W,
     ;
 
 
@@ -23,7 +23,7 @@ public enum CardValue {
     @Override
     public String toString() {
         if(ordinal() >= 8 && ordinal() <= 11 || (ordinal() >= 13)){
-            return name().toLowerCase(Locale.ROOT);
+            return name();
         }else if(this == TWO){
             return String.valueOf(ordinal() - 10);
         }else{
@@ -32,34 +32,24 @@ public enum CardValue {
     }
 
     public static CardValue parse(String s){
-        try {
-            int i = Integer.parseInt(s);
-            return switch(i){
-                case 1 -> A;
-                case 2 -> TWO;
-                case 3 -> THREE;
-                case 4 -> FOUR;
-                case 5 -> FIVE;
-                case 6 -> SIX;
-                case 7 -> SEVEN;
-                case 8 -> EIGHT;
-                case 9 -> NINE;
-                case 10 -> TEN;
-                case 11 -> J;
-                case 12 -> Q;
-                case 13 -> K;
-                default -> throw new RuntimeException("?");
+            return switch(s){
+                case "a" -> A;
+                case "2" -> TWO;
+                case "3" -> THREE;
+                case "4" -> FOUR;
+                case "5" -> FIVE;
+                case "6" -> SIX;
+                case "7" -> SEVEN;
+                case "8" -> EIGHT;
+                case "9" -> NINE;
+                case "x" -> X;
+                case "j" -> J;
+                case "q" -> Q;
+                case "k" -> K;
+                case "w" -> w;
+                case "W" -> W;
+                default -> null;
             };
-
-        } catch (NumberFormatException ignored) {
-
-        }
-
-        return switch (s) {
-            case "small_joker" -> w;
-            case "big_joker" -> W;
-            default -> throw new RuntimeException("?");
-        };
     }
 
 }

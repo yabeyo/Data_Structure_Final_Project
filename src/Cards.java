@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public record Cards(Suit suit, CardValue value) {
 
@@ -21,6 +20,6 @@ public record Cards(Suit suit, CardValue value) {
         return Deck;
     }
     public int getCardValue(){
-        return value.ordinal() + 1;
+        return value.ordinal() + 3;
     }
 }
